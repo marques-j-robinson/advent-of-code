@@ -11,3 +11,6 @@ Notes about specific modules.
 - `python-dotenv` keeps track of an individuals cookie
 - `urllib3` make the request to the Advent of Code server
 - The response to a successful request is decoded using UTF-8 and stripped of any new line characters
+
+### Caching Puzzle Input
+Before requesting the puzzle input there is a check to confirm that the puzzle input can not be found in the `cache` directory.
