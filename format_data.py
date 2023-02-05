@@ -10,12 +10,16 @@ def split_by_new_line(puzzle_input):
     return puzzle_input.split('\n')
 
 
-def parse_coord(coord):
-    return [int(i) for i in coord.split(',')]
-
-
 def int_list(a):
     return [int(i) for i in a]
+
+
+def int_list_by_new_line(puzzle_input):
+    return int_list(split_by_new_line(puzzle_input))
+
+
+def parse_coord(coord):
+    return [int(i) for i in coord.split(',')]
 
 
 def leading_zero(n):
