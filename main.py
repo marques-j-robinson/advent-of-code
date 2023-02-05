@@ -3,6 +3,7 @@ import importlib
 from cache_layer import get_puzzle_input
 from format_data import leading_zero
 
+import pyperclip
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,5 +21,11 @@ if __name__ == '__main__':
     puzzle_input = get_puzzle_input(puzzle_id)
     s = import_solution()
     print(f'---SOLVING---')
-    print(f'Part 1: {s.p1(puzzle_input)}')
-    print(f'Part 2: {s.p2(puzzle_input)}')
+    p1 = s.p1(puzzle_input)
+    p2 = s.p2(puzzle_input)
+    print(f'Part 1: {p1}')
+    print(f'Part 2: {p2}')
+    if p2 == 0:
+        pyperclip.copy(str(p1))
+    else:
+        pyperclip.copy(str(p2))
