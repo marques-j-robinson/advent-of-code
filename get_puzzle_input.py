@@ -4,8 +4,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def setup_url(event, day):
+def setup_url():
 	base = 'https://adventofcode.com'	
+	event = os.getenv('EVENT')
+	day = os.getenv('DAY')
 	return f'{base}/{event}/day/{day}/input'
 
 
@@ -18,7 +20,7 @@ def format_init_puzzle_input(data):
 	return data.decode('utf-8').rstrip('\n')
 
 
-def get_puzzle_input(event, day):
+def get_puzzle_input():
 	http = urllib3.PoolManager()
 	r = http.request('GET', setup_url(event, day), headers=setup_request_headers())
 	return format_init_puzzle_input(r.data)
