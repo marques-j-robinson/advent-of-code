@@ -1,6 +1,7 @@
 # advent-of-code
 
 ## Usage
+1) Create and activate a virtual environment
 1) Duplicate `.template-env` to `.env` and update GitHub session token
 1) Create a `cache` directory
 
