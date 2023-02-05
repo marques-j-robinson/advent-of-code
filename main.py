@@ -1,7 +1,7 @@
 import os
 import importlib
 from cache_layer import get_puzzle_input
-from util import leading_zero
+from format_data import leading_zero
 
 from dotenv import load_dotenv
 load_dotenv()
