@@ -4,6 +4,8 @@
 1) Create and activate a virtual environment
 1) Duplicate `.template-env` to `.env` and update GitHub session token
 1) Create a `cache` directory
+1) Configure `EVENT` and `DAY` values in `.env`
+1) Execute `python main.py --generate` to fetch the data for a puzzle
 
 ## Documentation
 Notes about specific modules.

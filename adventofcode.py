@@ -1,5 +1,6 @@
 import os
 import urllib3
+from format_data import init_format
 
 
 def setup_url():
@@ -14,11 +15,8 @@ def setup_request_headers():
 	return {'Cookie':f'session={session}'}
 
 
-def format_init_puzzle_input(data):
-	return data.decode('utf-8').rstrip('\n')
-
-
-def get_puzzle_input():
+def fetch():
+	print('Fetching puzzle input from server...')
 	http = urllib3.PoolManager()
-	r = http.request('GET', setup_url(event, day), headers=setup_request_headers())
-	return format_init_puzzle_input(r.data)
+	r = http.request('GET', setup_url(), headers=setup_request_headers())
+	return init_format(r.data)
