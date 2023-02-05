@@ -12,3 +12,7 @@ def parse_coord(coord):
 
 def list_of_tuples(puzzle_input):
 	return [(d[0], int(d[1:len(d)])) for d in puzzle_input.split(', ')]
+
+
+def int_list(a):
+    return [int(i) for i in a]
