@@ -16,7 +16,7 @@ def setup_request_headers():
 
 
 def fetch():
-	print('Fetching puzzle input from server...')
+	print('Fetching puzzle_input from server...')
 	http = urllib3.PoolManager()
 	r = http.request('GET', setup_url(), headers=setup_request_headers())
 	return init_format(r.data)

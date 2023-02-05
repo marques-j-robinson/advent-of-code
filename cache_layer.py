@@ -10,7 +10,7 @@ def read_puzzle_input(cache_path):
 
 
 def save_puzzle_input(cache_path, puzzle_input):
-    print('Caching puzzle input...')
+    print('Caching puzzle_input...')
     f = open(cache_path, 'w')
     f.write(puzzle_input)
     f.close()
