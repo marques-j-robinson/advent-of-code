@@ -1,7 +1,5 @@
 import os
 import urllib3
-from dotenv import load_dotenv
-load_dotenv()
 
 
 def setup_url():
