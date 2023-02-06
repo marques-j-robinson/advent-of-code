@@ -1,4 +1,15 @@
-from format_data import parse_coord
+from format_data import parse_coord, int_list
+
+
+class Cube:
+
+    def __init__(self, sides):
+        self.sides = int_list(sides.split('x'))
+        self.setup_smallest_side()
+
+    def setup_smallest_side(self):
+        self.sm_side = self.sides[:]
+        self.sm_side.remove(max(self.sm_side))
 
 
 class Grid:
