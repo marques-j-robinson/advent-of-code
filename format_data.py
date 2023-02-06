@@ -10,6 +10,10 @@ def split_by_new_line(puzzle_input):
     return puzzle_input.split('\n')
 
 
+def split_by_comma(puzzle_input):
+    return puzzle_input.split(',')
+
+
 def int_list(a):
     return [int(i) for i in a]
 
