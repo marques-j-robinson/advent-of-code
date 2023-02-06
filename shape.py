@@ -14,13 +14,14 @@ class Cube:
 
 class Grid:
 
-    def __init__(self, directions, origin='0,0', boundries=None):
+    def __init__(self, directions, origin='0,0', boundry=None):
         self.directions = directions
-        self.coord = origin
+        self.boundry = boundry
         self.seen = []
-        self.x = 0
-        self.y = 0
-        self.boundries = boundries
+        self.coord = origin
+        [x, y] = parse_coord(self.coord)
+        self.x = x
+        self.y = y
 
     def move(self, d):
         [x, y] = parse_coord(self.coord)
@@ -34,7 +35,7 @@ class Grid:
             x -= 1
         coord = f"{x},{y}"
         
-        if self.boundries is not None and coord in self.boundries:
+        if self.boundry is not None and coord in self.boundry:
             pass
         else:
             self.x = x
