@@ -37,7 +37,6 @@ def p1(puzzle_input):
 	puzzle_input = split_by_new_line(puzzle_input)
 	boundries = ['0,2', '1,2', '2,1', '2,0', '2,-1', '1,-2', '0,-2', '-1,-2', '-2,-1', '-2,0', '-2,1', '-1,2']
 	num_pad = NumPad(directions, boundries=boundries)
-	G = Grid(directions, boundries=boundries)
 	for instructions in puzzle_input:
 		for i in instructions:
 			num_pad.move(i)
