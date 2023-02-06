@@ -18,7 +18,6 @@ class Grid:
         self.directions = directions
         self.coord = origin
         self.seen = []
-        self.history = []
         self.x = 0
         self.y = 0
         self.boundries = boundries
@@ -45,11 +44,7 @@ class Grid:
     def move_auto(self, d):
         self.move(d)
         self.add_seen()
-        self.add_history()
 
     def add_seen(self):
         if self.coord not in self.seen:
             self.seen.append(self.coord)
-
-    def add_history(self):
-        self.history.append(self.coord)
