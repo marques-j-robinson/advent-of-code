@@ -1,13 +1,4 @@
 from format_data import split_by_new_line
-from shape import Grid
-
-
-directions = {
-	"up": "down",
-	"down": "up",
-	"right": "forward",
-	"left": "NA"
-}
 
 
 def format_puzzle_input(puzzle_input):
@@ -20,15 +11,29 @@ def format_puzzle_input(puzzle_input):
 
 def p1(puzzle_input):
 	puzzle_input = format_puzzle_input(puzzle_input)
-	G = Grid(directions)
+	horizontal_position = 0
+	depth = 0
 	for direction, steps in puzzle_input:
-		while steps > 0:
-			steps -= 1
-			G.move_auto(direction)	
-	return G.x*G.y
+		if direction == "up":
+			depth -= steps
+		elif direction == "down":
+			depth += steps
+		elif direction == "forward":
+			horizontal_position += steps
+	return horizontal_position*depth
 
 
 def p2(puzzle_input):
-	res = 0
 	puzzle_input = format_puzzle_input(puzzle_input)
-	return res
+	aim = 0
+	horizontal_position = 0
+	depth = 0
+	for direction, steps in puzzle_input:
+		if direction == "up":
+			aim -= steps	
+		elif direction == "down":
+			aim += steps
+		elif direction == "forward":
+			horizontal_position += steps
+			depth += aim*steps
+	return horizontal_position*depth
