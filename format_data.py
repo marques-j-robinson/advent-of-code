@@ -28,3 +28,7 @@ def parse_coord(coord):
 
 def leading_zero(n):
     return str(n).zfill(2)
+
+
+def combine(a, b):
+    return len(a + list(set(b) - set(a)))

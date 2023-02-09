@@ -21,3 +21,7 @@ def perimeter(n):
 def volume(n):
     [x, y, z] = n
     return x*y*z
+
+
+def is_even(i):
+    return i % 2 == 0
