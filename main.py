@@ -11,13 +11,13 @@ event = os.getenv('EVENT')
 day = leading_zero(os.getenv('DAY'))
 
 
-def import_solution():
+def import_solution_module():
     return importlib.import_module(f'Events.{event}.day{day}')
 
 
 if __name__ == '__main__':
-    solution_module = import_solution()
-    s = solution_module.S()
+    module = import_solution_module()
+    s = module.S()
     s.solve()
     print(f'Part 1: {s.p1}')
     print(f'Part 2: {s.p2}')
