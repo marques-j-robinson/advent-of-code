@@ -14,3 +14,7 @@ def remove_diff_chars(s1, s2):
 		if char == s2[idx]:
 			res += char
 	return res
+
+
+def leading_zero(n):
+    return str(n).zfill(2)

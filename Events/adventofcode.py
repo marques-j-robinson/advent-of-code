@@ -1,18 +1,21 @@
 import os
 import urllib3
+
 from format_data import init_format
+
+
+event = os.getenv('EVENT')
+day = os.getenv('DAY')
+github_token = os.getenv('GITHUB')
 
 
 def setup_url():
 	base = 'https://adventofcode.com'	
-	event = os.getenv('EVENT')
-	day = os.getenv('DAY')
 	return f'{base}/{event}/day/{day}/input'
 
 
 def setup_request_headers():
-	session = os.getenv('GITHUB')
-	return {'Cookie':f'session={session}'}
+	return {'Cookie':f'session={github_token}'}
 
 
 def fetch():

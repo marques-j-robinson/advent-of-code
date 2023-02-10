@@ -1,29 +1,22 @@
-UP = "("
+from Events.solution import Solution
 
-
-def step(i):
-	if i == UP:
+def step(direction):
+	up = "("
+	if direction == up:
 		return 1
 	else:
 		return -1
 
 
-def p1(puzzle_input):
-	res = 0
-	for i in puzzle_input:
-		res += step(i)
-	return res
-
-
-def is_basement_entry(floor_id):
+def stepping_into_basement(floor_id):
 	return floor_id == -1
 
 
-def p2(puzzle_input):
-	res = 0	
-	floor_id = 0
-	for idx, i in enumerate(puzzle_input):
-		if res == 0 and is_basement_entry(floor_id):
-			res = idx 
-		floor_id += step(i)
-	return res
+class S(Solution):
+
+
+	def solve(self):
+		for idx, direction in enumerate(self.data):
+			self.p1 += step(direction)
+			if self.p2 == 0 and stepping_into_basement(self.p1):
+				self.p2 = idx
