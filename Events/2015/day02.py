@@ -1,21 +1,38 @@
-from format_data import split_by_new_line
-from shape import Cube
-from calc import surface_area, area, volume, perimeter
+from Events.solution import Solution
+from util import int_list
 
 
-def p1(puzzle_input):
-	res = 0
-	puzzle_input = split_by_new_line(puzzle_input)
-	for i in puzzle_input:
-		box = Cube(i)
-		res += surface_area(box.sides) + area(box.sm_side)
-	return res
+def surface_area(n):
+    [x, y, z] = n
+    return 2*x*y + 2*x*z + 2*y*z
 
 
-def p2(puzzle_input):
-	res = 0
-	puzzle_input = split_by_new_line(puzzle_input)
-	for i in puzzle_input:
-		box = Cube(i)
-		res += volume(box.sides) + perimeter(box.sm_side)
-	return res
+def area(n):
+    res = 1
+    for i in n:
+        res = res * i
+    return res
+
+
+def perimeter(n):
+    return sum([2*i for i in n])
+
+
+def volume(n):
+    [x, y, z] = n
+    return x*y*z
+
+
+class S(Solution):
+
+	def solve(self):
+		self.split_by_new_line()
+		for dimensions in self.data:
+			self.box(dimensions)
+			self.p1 += surface_area(self.sides) + area(self.sm_side)
+			self.p2 += volume(self.sides) + perimeter(self.sm_side)
+
+	def box(self, dimensions):
+		self.sides = int_list(dimensions.split('x'))
+		self.sm_side = self.sides[:]
+		self.sm_side.remove(max(self.sm_side))

@@ -45,3 +45,6 @@ class Solution:
 	        pyperclip.copy(str(self.p1))
 	    else:
 	        pyperclip.copy(str(self.p2))
+
+	def split_by_new_line(self):
+		self.data = self.data.split("\n")
