@@ -14,7 +14,6 @@ def stepping_into_basement(floor_id):
 
 class S(Solution):
 
-
 	def solve(self):
 		for idx, direction in enumerate(self.data):
 			self.p1 += step(direction)
