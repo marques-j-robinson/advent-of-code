@@ -1,5 +1,6 @@
 from Events.solution import Solution
 
+
 def step(direction):
 	up = "("
 	if direction == up:
