@@ -8,3 +8,7 @@ def is_even(i):
 
 def combine(a, b):
     return len(a + list(set(b) - set(a)))
+
+
+def manhattan_distance(a, b):
+    return abs(a) + abs(b)
