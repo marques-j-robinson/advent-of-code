@@ -1,11 +1,8 @@
 from Events.solution import Solution
-from util import manhattan_distance
+from util import Grid, manhattan_distance
 
 
-up = "N"
-right = "E"
-down = "S"
-left = "W"
+directions = ["N", "S", "W", "E"]
 pivot = {
     "NR": "E",
     "NL": "W",
@@ -18,32 +15,6 @@ pivot = {
 }
 
 
-class Grid:
-
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-        self.seen = []
-
-    def move(self, d):
-        if d == up:
-            self.y += 1
-        elif d == right:
-            self.x += 1
-        elif d == down:
-            self.y -= 1
-        elif d == left:
-            self.x -= 1
-
-    def add_seen(self):
-        coord = self.coord()
-        if coord not in self.seen:
-            self.seen.append(coord)
-
-    def coord(self):
-        return f"{self.x},{self.y}"
-
-
 class S(Solution):
 
     def split_by_comma(self):
@@ -52,17 +23,23 @@ class S(Solution):
     def list_of_tuples(self):
         self.data = [(d[0], int(d[1:len(d)])) for d in self.data]
 
+    def is_intersection(self, G):
+        return self.p2 == 0 and G.coord() in G.seen
+    
+    def check_intersection(self, G):
+        if self.is_intersection(G):
+            self.p2 = manhattan_distance(G.x, G.y)
+
     def solve(self):
         self.split_by_comma()
         self.list_of_tuples()
-        direction = up
-        G = Grid()
+        direction = directions[0]
+        G = Grid(directions)
         for turn, steps in self.data:
             direction = pivot[f'{direction}{turn}']
             while steps > 0:
                 G.move(direction)
-                if self.p2 == 0 and G.coord() in G.seen:
-                    self.p2 = manhattan_distance(G.x, G.y)
+                self.check_intersection(G)
                 G.add_seen()
                 steps -= 1
         self.p1 = manhattan_distance(G.x, G.y)
