@@ -10,10 +10,6 @@ def combine(a, b):
     return len(a + list(set(b) - set(a)))
 
 
-def manhattan_distance(a, b):
-    return abs(a) + abs(b)
-
-
 class Grid:
 
     def __init__(self, directions):
@@ -48,3 +44,6 @@ class Grid:
         coord = self.coord()
         if coord not in self.seen:
             self.seen.append(coord)
+
+    def manhattan_distance(self):
+        return abs(self.x) + abs(self.y)

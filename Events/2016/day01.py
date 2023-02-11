@@ -1,5 +1,5 @@
 from Events.solution import Solution
-from util import Grid, manhattan_distance
+from util import Grid
 
 
 directions = ["N", "S", "W", "E"]
@@ -28,7 +28,7 @@ class S(Solution):
     
     def check_intersection(self, G):
         if self.is_intersection(G):
-            self.p2 = manhattan_distance(G.x, G.y)
+            self.p2 = G.manhattan_distance()
 
     def solve(self):
         self.split_by_comma()
@@ -42,4 +42,4 @@ class S(Solution):
                 self.check_intersection(G)
                 G.add_seen()
                 steps -= 1
-        self.p1 = manhattan_distance(G.x, G.y)
+        self.p1 = G.manhattan_distance()
