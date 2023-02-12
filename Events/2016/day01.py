@@ -3,6 +3,9 @@ from util import Grid
 
 
 directions = ["N", "S", "W", "E"]
+G = Grid(directions)
+
+
 pivot = {
     "NR": "E",
     "NL": "W",
@@ -24,7 +27,8 @@ class S(Solution):
         self.data = [(d[0], int(d[1:len(d)])) for d in self.data]
 
     def is_intersection(self, G):
-        return self.p2 == 0 and G.coord() in G.seen
+        G.save_coord()
+        return self.p2 == 0 and G.coord in G.seen
     
     def check_intersection(self, G):
         if self.is_intersection(G):
@@ -34,7 +38,6 @@ class S(Solution):
         self.split_by_comma()
         self.list_of_tuples()
         direction = directions[0]
-        G = Grid(directions)
         for turn, steps in self.data:
             direction = pivot[f'{direction}{turn}']
             while steps > 0:
