@@ -3,14 +3,14 @@ from util import Grid, is_even, combine
         
 
 directions = ["^", "v", "<", ">"]
+p1_santa = Grid(directions)
+p2_santa = Grid(directions)
+robo_santa = Grid(directions)
 
 
 class S(Solution):
 
     def solve(self):
-        p1_santa = Grid(directions)
-        p2_santa = Grid(directions)
-        robo_santa = Grid(directions)
         for idx, direction in enumerate(self.data):
             if is_even(idx):
                 p2_santa.save_move(direction)
