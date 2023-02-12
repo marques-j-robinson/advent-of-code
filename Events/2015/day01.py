@@ -9,14 +9,13 @@ def step(direction):
 		return -1
 
 
-def stepping_into_basement(floor_id):
-	return floor_id == -1
-
-
 class S(Solution):
+
+	def stepping_into_basement(self):
+		return self.p1 == -1
 
 	def solve(self):
 		for idx, direction in enumerate(self.data):
 			self.p1 += step(direction)
-			if self.p2 == 0 and stepping_into_basement(self.p1):
+			if self.p2 == 0 and self.stepping_into_basement():
 				self.p2 = idx
