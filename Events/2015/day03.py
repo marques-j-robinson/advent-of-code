@@ -2,7 +2,7 @@ from Events.solution import Solution
 from util import Grid, is_even, combine
         
 
-directions = ["^", "v", "<", ">"]
+directions = [">", "^", "<", "v"]
 p1_santa = Grid(directions)
 p2_santa = Grid(directions)
 robo_santa = Grid(directions)
