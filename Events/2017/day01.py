@@ -1,26 +1,20 @@
-from format_data import int_list
+from Events.solution import Solution
+from util import int_list
 
 
-def p1(puzzle_input):
-	res = 0
-	puzzle_input = int_list(puzzle_input)
-	prev = puzzle_input[len(puzzle_input) - 1]
-	for x in puzzle_input:
-		if prev == x:
-			res += x
-		prev = x
-	return res
+class S(Solution):
 
-
-def p2(puzzle_input):
-	res = 0
-	puzzle_input = int_list(puzzle_input)
-	half = len(puzzle_input) // 2
-	for idx, x in enumerate(puzzle_input):
-		if idx + half > len(puzzle_input) - 1:
-			half_i = puzzle_input[idx - half]
-		else:
-			half_i = puzzle_input[idx + half]
-		if half_i == x:
-			res += x
-	return res
+	def solve(self):
+		self.data = int_list(self.data)
+		prev = self.data[len(self.data)-1]
+		half = len(self.data) // 2
+		for idx, i in enumerate(self.data):
+			if prev == i:
+				self.p1 += i
+			prev = i
+			if idx + half > len(self.data)-1:
+				half_i = self.data[idx - half]
+			else:
+				half_i = self.data[idx + half]
+			if half_i == i:
+				self.p2 += i
