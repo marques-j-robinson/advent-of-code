@@ -18,9 +18,5 @@ def int_list_by_new_line(puzzle_input):
     return int_list(split_by_new_line(puzzle_input))
 
 
-def parse_coord(coord):
-    return [int(i) for i in coord.split(',')]
-
-
 def combine(a, b):
     return len(a + list(set(b) - set(a)))
