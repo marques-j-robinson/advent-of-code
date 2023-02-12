@@ -2,7 +2,7 @@ from Events.solution import Solution
 from util import Grid
 		
 
-directions = ["U", "D", "L", "R"]
+directions = ["R", "U", "L", "D"]
 G_p1 = Grid(directions)
 G_p2 = Grid(directions)
 
@@ -50,6 +50,7 @@ class NumPad:
 		print(self.buttons)
 		return ''.join([str(i) for i in self.buttons])
 
+		
 class S(Solution):
 
 	def move_p1(self, direction):
