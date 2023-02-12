@@ -2,7 +2,7 @@ from Events.solution import Solution
 from util import Grid
 
 
-directions = ["N", "S", "W", "E"]
+directions = ["E", "N", "W", "D"]
 G = Grid(directions)
 
 
