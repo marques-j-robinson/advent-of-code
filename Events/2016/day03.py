@@ -1,8 +1,5 @@
-from format_data import split_by_new_line, int_list
-
-
-def format_puzzle_input(puzzle_input):
-	return [int_list(l.strip().split()) for l in split_by_new_line(puzzle_input)]
+from Events.solution import Solution
+from util import int_list
 
 
 def compare(lengths):
@@ -10,36 +7,20 @@ def compare(lengths):
     return a+b>c and a+c>b and b+c>a
 
 
-def p1(puzzle_input):
-	res = 0
-	puzzle_input = format_puzzle_input(puzzle_input)
-	for lengths in puzzle_input:
-		if compare(lengths) is True:
-			res += 1
-	return res
+class S(Solution):
 
+	triangles = [[], [], []]
 
-def p2(puzzle_input):
-	res = 0
-	puzzle_input = format_puzzle_input(puzzle_input)
-	idx = 0
-	a = []
-	b = []
-	c = []
-	while idx < len(puzzle_input):
-		[a_val, b_val, c_val] = puzzle_input[idx]
-		a.append(a_val)
-		b.append(b_val)
-		c.append(c_val)
-		if (idx+1) % 3 == 0:
-			if compare(a) is True:
-				res += 1
-			if compare(b) is True:
-				res += 1
-			if compare(c) is True:
-				res += 1
-			a = []
-			b = []
-			c = []
-		idx += 1
-	return res
+	def solve(self):
+		self.split_by_new_line()
+		self.data = [int_list(i.split()) for i in self.data]
+		for idx, lengths in enumerate(self.data):
+			if compare(lengths):
+				self.p1 += 1
+			for tri_idx, i in enumerate(self.triangles):
+				i.append(lengths[tri_idx])
+			if (idx+1)%3==0:
+				for i in self.triangles:
+					if compare(i):
+						self.p2 += 1
+				self.triangles = [[], [], []]
