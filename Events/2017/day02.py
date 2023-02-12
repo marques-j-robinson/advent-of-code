@@ -1,26 +1,20 @@
-from format_data import split_by_new_line, int_list
+from Events.solution import Solution
+from util import int_list
 
 
-def format_puzzle_input(puzzle_input):
-	return [int_list(l.strip().split("\t")) for l in split_by_new_line(puzzle_input)]
+class S(Solution):
 
+	def format_puzzle_input(self):
+		self.split_by_new_line()
+		self.data = [int_list(i.strip().split("\t")) for i in self.data]
 
-def p1(puzzle_input):
-	res = 0
-	puzzle_input = format_puzzle_input(puzzle_input)
-	for i in puzzle_input:
-		res += max(i) - min(i)
-	return res
-
-
-def p2(puzzle_input):
-	res = 0
-	puzzle_input = format_puzzle_input(puzzle_input)
-	for row in puzzle_input:
-		for idx, i in enumerate(row):
-			for j in row[idx+1:]:
-				m = max([i, j])
-				n = min([i, j])
-				if m%n==0:
-					res += m//n
-	return res
+	def solve(self):
+		self.format_puzzle_input()
+		for row in self.data:
+			self.p1 += max(row) - min(row)
+			for idx, i in enumerate(row):
+				for j in row[idx+1:]:
+					m = max([i, j])
+					n = min([i, j])
+					if m%n==0:
+						self.p2 += m//n
