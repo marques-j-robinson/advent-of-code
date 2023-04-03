@@ -41,6 +41,12 @@ class DataTranslation(UserInput):
     
     def split_by_new_line(self):
         self.puzzle_input = [i.strip() for i in self.puzzle_input.split("\n")]
+    
+    def split_by_comma(self):
+        self.puzzle_input = self.puzzle_input.split(', ')
+
+    def list_of_tuples(self):
+        self.puzzle_input = [(d[0], int(d[1:len(d)])) for d in self.puzzle_input]
 
 
 class CacheLayer(DataTranslation):
@@ -73,6 +79,10 @@ class CacheLayer(DataTranslation):
         response = http.request('GET', self.set_url(), headers=self.set_headers())
         self.puzzle_input = response.data
         self.init_puzzle_input()
+
+
+def int_list(a):
+    return [int(i) for i in a]
 
 
 if __name__ == '__main__':
