@@ -45,7 +45,7 @@ class DataTranslation(UserInput):
 
 class CacheLayer(DataTranslation):
     
-    def cache_layer(self):
+    def get_puzzle_input(self):
         if self.is_cached():
             f = open(self.cache_path(), 'r')
             self.puzzle_input = f.read()
@@ -70,14 +70,15 @@ class CacheLayer(DataTranslation):
 
     def request(self):
         http = urllib3.PoolManager()
-        response = http.request('GET', self.puzzle_input_url(), headers=self.set_headers())
+        response = http.request('GET', self.set_url(), headers=self.set_headers())
         self.puzzle_input = response.data
-        self.format_puzzle_input()
+        self.init_puzzle_input()
 
 
 if __name__ == '__main__':
     i = UserInput()
     s = i.solution_module.S()
+    s.get_puzzle_input()
     s.solve()
     if s.p2 == 0:
         print(f'Part 1: {s.p1}')
