@@ -43,10 +43,10 @@ class DataTranslation(UserInput):
         self.puzzle_input = [i.strip() for i in self.puzzle_input.split("\n")]
     
     def split_by_comma(self):
-        self.data = self.data.split(', ')
+        self.puzzle_input = self.puzzle_input.split(', ')
 
     def list_of_tuples(self):
-        self.data = [(d[0], int(d[1:len(d)])) for d in self.data]
+        self.puzzle_input = [(d[0], int(d[1:len(d)])) for d in self.puzzle_input]
 
 
 class CacheLayer(DataTranslation):
