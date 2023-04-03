@@ -81,6 +81,10 @@ class CacheLayer(DataTranslation):
         self.init_puzzle_input()
 
 
+def int_list(a):
+    return [int(i) for i in a]
+
+
 if __name__ == '__main__':
     i = UserInput()
     s = i.solution_module.S()
