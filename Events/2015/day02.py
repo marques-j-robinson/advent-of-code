@@ -1,8 +1,4 @@
-from main import CacheLayer
-
-
-def int_list(a):
-    return [int(i) for i in a]
+from main import CacheLayer, int_list
 
 
 def surface_area(n):
