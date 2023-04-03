@@ -41,6 +41,12 @@ class DataTranslation(UserInput):
     
     def split_by_new_line(self):
         self.puzzle_input = [i.strip() for i in self.puzzle_input.split("\n")]
+    
+    def split_by_comma(self):
+        self.data = self.data.split(', ')
+
+    def list_of_tuples(self):
+        self.data = [(d[0], int(d[1:len(d)])) for d in self.data]
 
 
 class CacheLayer(DataTranslation):
