@@ -29,6 +29,26 @@ def check_forbidden(s):
 	return res
 
 
+def dup_pairs(s):
+        res = False
+        for idx, l in enumerate(s):
+            if idx > 0:
+                pair = f"{s[idx - 1]}{l}"
+                if pair in s[idx + 1:]:
+                    res = True
+        return res
+
+
+def repeat_every_other_letter(s):
+    res = False
+    for idx, l in enumerate(s):
+        if idx > 1:
+            prev = s[idx - 2]
+            if prev == l:
+                res = True
+    return res
+
+
 class S(CacheLayer):
 
 	def solve(self):
@@ -38,3 +58,6 @@ class S(CacheLayer):
 				if calc_vowel_count(s) >= 3:
 					if check_dup(s) is True:
 						self.p1 += 1
+			if dup_pairs(s) is True:
+				if repeat_every_other_letter(s) is True:
+					self.p2 += 1
