@@ -1,27 +1,33 @@
 # Advent of Code
-Wrapper script for managing solutions to [this website](https://adventofcode.com/) written in Python.
+Personal project for solving puzzles from the Advent of Code [website](https://adventofcode.com/).
 
-## Startup
-After cloning *master* for the very first time:
-```bash
-cp .template-env .env && mkdir cache && mkdir Events
-# The command above does three things:
-# 1) Copies /.template-env to /.env within the root of this project
-# 2) Creates a directory named cache (Note: This directory will be ignored by version control)
-# 3) Creates an additional directory named Events
-```
+## Initialize Program 
+Once this repository has been successfully cloned there are a few commands to execute in the terminal prior to attempting any solutions.
 
-Setup Development Environment:
+### Python Specific Setup Commands
+Create Virtial Environment:
 ```bash
 python -m venv venv && source venv/bin/activate
-# The command above does two things:
-# 1) Creates a virtual environment
-# 2) Activates the virtual environment (Windows: .\venv\Scripts\activate)
 ```
 
 Install Dependencies:
 ```bash
 pip install --upgrade pip && pip install -r requirements.txt
+```
+
+### Project Specific Setup Commands
+The first command coppies the template environment file `.template-env` to the production
+environment file `.env`. This is done so as to keep any senstive information out of the GitHub
+repository.
+
+
+The second and third commands both do the same thing, they create empty directories.
+One for `cache` files and another for `Solution` scripts.
+
+
+All of these commands are expressed in a single line below:
+```bash
+cp .template-env .env && mkdir cache && mkdir Solutions
 ```
 
 ## Solving Puzzles
