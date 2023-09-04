@@ -7,6 +7,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def get_event_day_by_puzzle_id(puzzle_id):
+    return [int(i) for i in puzzle_id.split("_")]
+
+
 def configure_puzzle_id():
     """
     Use command line arguments first, then look for
@@ -25,7 +29,7 @@ def configure_puzzle_id():
     event = args.Event or os.getenv("EVENT") or DEFAULT_EVENT
     day = args.Day or os.getenv("DAY") or DEFAULT_DAY
     day_with_leading_zero = str(day).zfill(2)
-    return [f"{event}_{day_with_leading_zero}", event, day]
+    return f"{event}_{day_with_leading_zero}"
 
 
 # base_url = "https://adventofcode.com"
@@ -46,8 +50,9 @@ def get_puzzle_input():
 
 
 if __name__ == "__main__":
-    [puzzle_id, event, day] = configure_puzzle_id()
+    puzzle_id = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
+    [event, day] = get_event_day_by_puzzle_id(puzzle_id)
     print(event)
     print(day)
     # puzzle_input = get_puzzle_input()
