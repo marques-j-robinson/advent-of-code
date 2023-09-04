@@ -25,7 +25,7 @@ def configure_puzzle_id():
     event = args.Event or os.getenv("EVENT") or DEFAULT_EVENT
     day = args.Day or os.getenv("DAY") or DEFAULT_DAY
     day_with_leading_zero = str(day).zfill(2)
-    return f"{event}_{day_with_leading_zero}"
+    return [f"{event}_{day_with_leading_zero}", event, day]
 
 
 # base_url = "https://adventofcode.com"
@@ -46,9 +46,8 @@ def get_puzzle_input():
 
 
 if __name__ == "__main__":
-    puzzle_id = configure_puzzle_id()
+    [puzzle_id, event, day] = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
-    [event, day] = [int(i) for i in puzzle_id.split('_')]
     print(event)
     print(day)
     # puzzle_input = get_puzzle_input()
