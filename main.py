@@ -36,13 +36,15 @@ def configure_puzzle_id():
     return f"{event}_{day_with_leading_zero}"
 
 
-# base_url = "https://adventofcode.com"
-# puzzle_input_url = f"{base_url}/{event}/day/{day}/input"
-# request_headers = {"Cookie":f'session={os.getenv("TOKEN")}'}
-
-
-def get_puzzle_input():
+def get_puzzle_input(puzzle_id):
+    """
+    Fetches input data using the configured event/day values.
+    """
     print("Fetching puzzle input...")
+    base_url = "https://adventofcode.com"
+    [event, day] = get_event_day_by_puzzle_id(puzzle_id)
+    puzzle_input_url = f"{base_url}/{event}/day/{day}/input"
+    request_headers = {"Cookie":f'session={os.getenv("TOKEN")}'}
     try:
         http = urllib3.PoolManager()
         response = http.request("GET", puzzle_input_url, headers=request_headers)
@@ -56,10 +58,8 @@ def get_puzzle_input():
 if __name__ == "__main__":
     puzzle_id = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
-    [event, day] = get_event_day_by_puzzle_id(puzzle_id)
-    print(event)
-    print(day)
-    # puzzle_input = get_puzzle_input()
+    puzzle_input = get_puzzle_input(puzzle_id)
+    print(puzzle_input)
     # try:
     #     solution_module = importlib.import_module(f"Events.{event}.day{day_with_leading_zero}")
     #     solution = solution_module.Solution(puzzle_input)
