@@ -8,6 +8,10 @@ load_dotenv()
 
 
 def get_event_day_by_puzzle_id(puzzle_id):
+    """
+    Provided a puzzle id `2015_01`, will return event as 2015 and day as 1
+    Another example id `2017_22`, will return event as 2017 and day as 22
+    """
     return [int(i) for i in puzzle_id.split("_")]
 
 
