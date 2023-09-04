@@ -3,6 +3,7 @@ import argparse
 import importlib
 
 import urllib3
+import pyperclip
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -73,5 +74,11 @@ if __name__ == "__main__":
     puzzle_id = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
     puzzle_input = get_puzzle_input(puzzle_id)
-    solution_module = import_solution_module(puzzle_id, puzzle_input)
-    print(solution_module.data)
+    s = import_solution_module(puzzle_id, puzzle_input)
+    s.solve()
+    print(f"Part 1: {s.p1}")
+    if s.p2 == 0:
+        pyperclip.copy(str(s.p1))
+    else:
+        print(f"Part 2: {s.p2}")
+        pyperclip.copy(str(s.p2))
