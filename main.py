@@ -9,10 +9,10 @@ load_dotenv()
 
 def get_event_day_by_puzzle_id(puzzle_id):
     """
-    Provided a puzzle id `2015_01`, will return event as 2015 and day as 1
+    Provided a puzzle id `2015_01`, will return event as 2015 and day as 01
     Another example id `2017_22`, will return event as 2017 and day as 22
     """
-    return [int(i) for i in puzzle_id.split("_")]
+    return [i for i in puzzle_id.split("_")]
 
 
 def configure_puzzle_id():
@@ -43,7 +43,7 @@ def get_puzzle_input(puzzle_id):
     print("Fetching puzzle input...")
     base_url = "https://adventofcode.com"
     [event, day] = get_event_day_by_puzzle_id(puzzle_id)
-    puzzle_input_url = f"{base_url}/{event}/day/{day}/input"
+    puzzle_input_url = f"{base_url}/{event}/day/{int(day)}/input"
     request_headers = {"Cookie":f'session={os.getenv("TOKEN")}'}
     try:
         http = urllib3.PoolManager()
@@ -55,16 +55,23 @@ def get_puzzle_input(puzzle_id):
         print("Please remember to configure the .env file with a useful TOKEN value.")
 
 
+def import_solution_module(puzzle_id, puzzle_input):
+    """
+    Uses importlib with the event/day values return the correct solution module.
+    """
+    [event, day] = get_event_day_by_puzzle_id(puzzle_id)
+    try:
+        solution_module = importlib.import_module(f"Events.{event}.day{day}")
+        return solution_module.Solution(puzzle_input)
+    except Exception as e:
+        print("Exception thrown during module import!!")
+        print(e)
+        print("Please remember to create the Event folder as well as the solution module and class.")
+
+
 if __name__ == "__main__":
     puzzle_id = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
     puzzle_input = get_puzzle_input(puzzle_id)
-    print(puzzle_input)
-    # try:
-    #     solution_module = importlib.import_module(f"Events.{event}.day{day_with_leading_zero}")
-    #     solution = solution_module.Solution(puzzle_input)
-    #     print(solution.puzzle_input)
-    # except Exception as e:
-    #     print("Exception thrown during module import!!")
-    #     print(e)
-    #     print("Please remember to create the Event folder as well as the solution module and class.")
+    solution_module = import_solution_module(puzzle_id, puzzle_input)
+    print(solution_module.data)
