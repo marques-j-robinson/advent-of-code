@@ -1,8 +1,13 @@
 def int_list(data):
     return [int(i) for i in data]
 
+
 def split_by_comma(data):
     return data.split(', ')
+
+
+def split_by_new_line(data):
+    return data.split('\n')
 
 
 def list_of_tuples(data):
