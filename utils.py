@@ -10,6 +10,10 @@ def split_by_new_line(data):
     return data.split('\n')
 
 
+def int_list_by_new_line(data):
+    return int_list(split_by_new_line(data))
+
+
 def list_of_tuples(data):
     return [(d[0], int(d[1:len(d)])) for d in data]
 
