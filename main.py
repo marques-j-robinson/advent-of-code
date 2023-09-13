@@ -1,6 +1,7 @@
 import os
 import argparse
 import importlib
+from shutil import copyfile
 
 import urllib3
 import pyperclip
@@ -70,9 +71,20 @@ def import_solution_module(puzzle_id, puzzle_input):
         print("Please remember to create the Event folder as well as the solution module and class.")
 
 
+def copy_solution_template(puzzle_id):
+    [event, day] = get_event_day_by_puzzle_id(puzzle_id)
+    filename = f'Events/{event}/day{day}.py'
+    if os.path.exists(filename):
+        print(f'{event}_{day} PUZZLE ALREADY GENERATED!')
+    else:
+        copyfile('template.py', filename)
+        print(f'Generated puzzle at {filename}')
+
+
 if __name__ == "__main__":
     puzzle_id = configure_puzzle_id()
     print(f"Executing {puzzle_id} Solution...")
+    copy_solution_template(puzzle_id)
     puzzle_input = get_puzzle_input(puzzle_id)
     s = import_solution_module(puzzle_id, puzzle_input)
     s.solve()
