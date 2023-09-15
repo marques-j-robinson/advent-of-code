@@ -20,7 +20,8 @@ def list_of_tuples(data):
 
 class Grid:
 
-    def __init__(self, directions):
+    def __init__(self, directions, boundry=None):
+        self.boundry = boundry
         self.seen = []
         self.x = 0
         self.y = 0
@@ -55,8 +56,16 @@ class Grid:
             y -= 1
         elif d == self.left:
             x -= 1
-        self.x = x
-        self.y = y
+        if self.boundry is None:
+            self.x = x
+            self.y = y
+        else:
+            if abs(x) > self.boundry or abs(y) > self.boundry:
+                pass
+            else:
+                self.x = x
+                self.y = y
+
 
     def add_seen(self):
         self.save_coord()
