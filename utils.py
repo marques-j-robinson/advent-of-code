@@ -2,6 +2,10 @@ def int_list(data):
     return [int(i) for i in data]
 
 
+def split_by_tab(data):
+    return data.split('\t')
+
+
 def split_by_comma(data):
     return data.split(', ')
 
