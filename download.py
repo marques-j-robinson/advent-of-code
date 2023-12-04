@@ -8,6 +8,7 @@ load_dotenv()
 e = 2015
 d = 1
 
+cache_dir = f'cache/{e}'
 url = f'https://adventofcode.com/{e}/day/{d}/input'
 token = os.getenv('TOKEN')
 headers = {'Cookie':f'session={token}'}
@@ -24,6 +25,11 @@ def create_dir(dir_path):
         os.makedirs(dir_path)
 
 
+def does_cache_exist(cache_path):
+    return os.path.exists(cache_path)
+
+
 if __name__ == '__main__':
-    create_dir(f'cache/{e}')
-    print('hi')
+    create_dir(cache_dir)
+    if does_cache_exist(f'{cache_dir}/{d}'):
+        print(f'puzzle input cached\nExiting...')
