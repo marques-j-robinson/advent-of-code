@@ -1,0 +1,19 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "My aoc Solutions",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marques-j-robinson/advent-of-code.git"
+  },
+  "author": "marques-j-robinson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marques-j-robinson/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/marques-j-robinson/advent-of-code#readme"
+}
