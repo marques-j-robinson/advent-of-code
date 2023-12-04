@@ -3,11 +3,7 @@ import {
     sum,
 } from '../util.js'
 
-const p1 = sum(input
-    .replaceAll('(', '1,')
-    .replaceAll(')', '-1,')
-    .split(','))
-console.log(p1)
+console.log(sum(input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',')))
 
 let p2 = 0
 let cur = 0
