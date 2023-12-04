@@ -8,17 +8,29 @@ Solutions to [aoc](https://adventofcode.com/).
 
 **Tip** Recieving permission denied error while piping stored puzzle input file to node script? Following these for [basic chmod usage](https://stackoverflow.com/a/48757287) and [-R flag usage](https://stackoverflow.com/a/11512211)
 
-```bin
+```bash
 sudo chmod -R 755 cache/
 ```
 
-## Download Script
+## Download Puzzle Input
 Python script that stores puzzle input files to the filesystem.
 
-**Notes**
-- *Event* and *Day* are configurable within `download.py`
-- Ensure virtual environment is active and dependencies installed
+Input file may be found at `/cache/{event}/{day}`
 
-```bin
+**Notes**
+- Ensure virtual environment is active and dependencies installed
+- *Event* and *Day* are configurable within `download.py`
+- Bypasses if input file already exists in the cache
+
+```bash
 python download.py
+```
+
+## JavaScript Solve Script
+Leveraging [Nodemon's ability to execute multiple commands](https://github.com/remy/nodemon/issues/1239#issuecomment-533034562) and [npm script command line arguments](https://stackoverflow.com/questions/11580961/sending-command-line-arguments-to-npm-script).
+
+Solution JavaScript code will be found at `/src/{event}/{day}.js`
+
+```bash
+AOC=2015/1 npm run start
 ```
