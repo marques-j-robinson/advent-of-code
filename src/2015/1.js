@@ -1,7 +1,4 @@
-import {
-    input,
-    sum,
-} from '../util.js'
+import { input, sum, } from '../util.js'
 
 console.log(sum(input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',')))
 
