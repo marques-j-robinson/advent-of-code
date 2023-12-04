@@ -19,11 +19,11 @@ def save_new_puzzle_input():
     return r.data.decode('utf-8').rstrip('\n')
 
 
-def check_cache_dir():
-    if not os.path.exists('cache'):
-        os.makedirs('cache')
+def create_dir(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
 
 
 if __name__ == '__main__':
-    check_cache_dir()
+    create_dir(f'cache/{e}')
     print('hi')
