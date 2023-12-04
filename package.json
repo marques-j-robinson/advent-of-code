@@ -4,7 +4,8 @@
   "description": "My aoc Solutions",
   "main": "src/app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "solve": "nodemon --exec 'cat cache/$AOC | babel-node' src/$AOC.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,21 @@
   "bugs": {
     "url": "https://github.com/marques-j-robinson/advent-of-code/issues"
   },
-  "homepage": "https://github.com/marques-j-robinson/advent-of-code#readme"
+  "homepage": "https://github.com/marques-j-robinson/advent-of-code#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.5",
+    "@babel/node": "^7.22.19",
+    "@babel/preset-env": "^7.23.5",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.2"
+  }
 }
