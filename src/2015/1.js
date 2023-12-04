@@ -1,3 +1,4 @@
-import {input} from '../handle-puzzle-input.js'
+import {input} from '../util.js'
 console.log(input)
-console.log('hi')
+
+let p1 = 0
