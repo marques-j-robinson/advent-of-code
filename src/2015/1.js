@@ -1,4 +1,10 @@
-import {input} from '../util.js'
-console.log(input)
+import {
+    input,
+    sum,
+} from '../util.js'
 
-let p1 = 0
+const p1 = sum(input
+    .replaceAll('(', '1,')
+    .replaceAll(')', '-1,')
+    .split(','))
+console.log(p1)
