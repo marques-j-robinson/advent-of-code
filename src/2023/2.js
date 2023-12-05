@@ -1,10 +1,12 @@
 import {input, splitByLine, sum} from '../util.js'
 
+const gameData = s => s.match(/: (.*)/)[1]
+const gameId = s => s.match(/Game (\d*)/)[1]
+
 console.log(sum(
     splitByLine(input).map(l => {
-        const [_, id, gameData] = l.match(/Game (\d*): (.*)/)
         let isValid = true
-        gameData.split('; ').map(cubes => {
+        gameData(l).split('; ').map(cubes => {
             cubes.split(', ').forEach(c => {
                 const [n, cube] = c.split(' ')
                 if (cube === 'red' && n > 12) isValid = false
@@ -12,7 +14,7 @@ console.log(sum(
                 if (cube === 'blue' && n > 14) isValid = false
             })
         })
-        if (isValid) return id
+        if (isValid) return gameId(l)
     }).filter(i => i)
 ))
 
@@ -21,7 +23,7 @@ console.log(sum(
         let red =  0
         let green =  0
         let blue =  0
-        l.match(/: (.*)/)[1].split('; ').map(cubes => {
+        gameData(l).split('; ').map(cubes => {
             cubes.split(', ').forEach(c => {
                 const [n, cube] = c.split(' ')
                 if (cube === 'red' && n > red) red = Number(n)
