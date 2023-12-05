@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-e = 2023
-d = 3
+e = os.getenv('year')
+d = os.getenv('day')
 
 cache_dir = f'cache/{e}'
 cache_path = f'{cache_dir}/{d}'
