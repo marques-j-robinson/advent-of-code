@@ -30,7 +30,7 @@ python download.py
 ## JavaScript Solve Script
 Leveraging [Nodemon's ability to execute multiple commands](https://github.com/remy/nodemon/issues/1239#issuecomment-533034562) and [npm script command line arguments](https://stackoverflow.com/a/25356509).
 
-Solution JavaScript code will be found at `/src/{event}/{day}.js`
+Solution JavaScript code will be found at `/js/{event}/{day}.js`
 
 ```bash
 AOC=2015/1 npm run start
