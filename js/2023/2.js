@@ -1,9 +1,10 @@
-import {input, splitByLine, sum} from '../util.js'
+import {input, splitByLine} from '../util.js'
+import {arraySum} from '../math.js'
 
 const gameData = s => s.match(/: (.*)/)[1]
 const gameId = s => s.match(/Game (\d*)/)[1]
 
-console.log(sum(
+console.log(arraySum(
     splitByLine(input).map(l => {
         let isValid = true
         gameData(l).split('; ').map(cubes => {
@@ -18,7 +19,7 @@ console.log(sum(
     }).filter(i => i)
 ))
 
-console.log(sum(
+console.log(arraySum(
     splitByLine(input).map(l => {
         let red =  0
         let green =  0

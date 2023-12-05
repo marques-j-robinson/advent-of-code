@@ -1,4 +1,4 @@
-import { input, splitByLine, } from '../util.js'
+import { input, splitByLine } from '../util.js'
 
 const getSeeds = s => s.match(/seeds: ([\d ]*)/)[1].split(' ').map(i => Number(i))
 const seeds = getSeeds(input)

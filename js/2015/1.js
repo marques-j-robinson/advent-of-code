@@ -1,6 +1,7 @@
-import { input, sum, } from '../util.js'
+import { arraySum } from '../math.js'
+import { input } from '../util.js'
 
-console.log(sum(input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',')))
+console.log(arraySum(input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',')))
 
 let p2 = 0
 let cur = 0
