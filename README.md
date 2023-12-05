@@ -15,11 +15,11 @@ sudo chmod -R 755 cache/
 ## Download Puzzle Input
 Python script that stores puzzle input files to the filesystem.
 
-Input file may be found at `/cache/{event}/{day}`
+Input file may be found at `/cache/{year}/{day}`
 
 **Notes**
 - Ensure virtual environment is active and dependencies installed
-- *Event* and *Day* are configurable within `download.py`
+- *year* and *day* are configurable within `.env`
 - Bypasses if input file already exists in the cache
 
 ```bash
