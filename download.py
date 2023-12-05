@@ -6,7 +6,7 @@ load_dotenv()
 
 
 e = 2023
-d = 1
+d = 2
 
 cache_dir = f'cache/{e}'
 cache_path = f'{cache_dir}/{d}'
