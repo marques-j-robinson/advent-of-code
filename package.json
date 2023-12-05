@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "test": "jest",
-    "solve": "nodemon --exec 'cat cache/$AOC | babel-node' src/$AOC.js"
+    "solve": "nodemon --exec 'cat cache/$AOC | babel-node' js/$AOC.js"
   },
   "repository": {
     "type": "git",
