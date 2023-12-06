@@ -31,7 +31,6 @@
     "nodemon": "^3.0.2"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
     "blueimp-md5": "^2.19.0"
   }
 }
