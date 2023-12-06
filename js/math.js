@@ -7,3 +7,5 @@ export const volumeRectangularPrism = ([l, w, h]) => l*w*h
 
 export const areaSquare = sides => sides.reduce((acc, i) => acc*i, 1)
 export const perimeterSquare = sides => sides.reduce((acc, i) => acc+i*2, 0)
+
+export const manhattanDistance = (a, b) => Math.abs(a) + Math.abs(b)
