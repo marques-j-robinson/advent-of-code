@@ -1,46 +1,27 @@
 import {input, splitByLine} from '../util.js'
+import {arrayProduct} from '../math.js'
 const i = splitByLine(input.trim()).map(i => i.match(/([\d]*)/g).filter(i => i).map(i => Number(i)))
 const times = i[0]
 const distanceRecords = i[1]
 
-const p1 = () => {
-    const allAttempts = []
-
-    times.forEach((totalTime, idx) => {
-        const distanceRecord = distanceRecords[idx]
-
-        let validAttempts = 0
-        let holdTime = 1
-        while (holdTime < totalTime) {
-            const travelTime = totalTime-holdTime
-            const distance = holdTime*travelTime
-            if (distance > distanceRecord) ++validAttempts
-            ++holdTime
-        }
-        allAttempts.push(validAttempts)
-    })
-
-    return allAttempts.reduce((acc, i) => acc*i, 1)
-}
-console.log(p1())
-
-const p2 = () => {
-    const totalTime = Number(times.join(''))
-    const distanceRecord = Number(distanceRecords.join(''))
-
-    const allAttempts = []
-
-    let validAttempts = 0
+const race = (time, distance) => {
+    let winCount = 0
     let holdTime = 1
-    while (holdTime < totalTime) {
-        const travelTime = totalTime-holdTime
-        const distance = holdTime*travelTime
-        if (distance > distanceRecord) ++validAttempts
+    while (holdTime < time) {
+        const travelTime = time-holdTime
+        if (holdTime*travelTime > distance) ++winCount
         ++holdTime
     }
-    allAttempts.push(validAttempts)
-
-    return allAttempts.reduce((acc, i) => acc*i, 1)
+    return winCount
 }
 
-console.log(p2())
+const wins = []
+times.forEach((t, idx) => {
+    const d = distanceRecords[idx]
+    wins.push(race(t, d))
+})
+console.log(arrayProduct(wins))
+
+const time = Number(times.join(''))
+const distance = Number(distanceRecords.join(''))
+console.log(race(time, distance))
