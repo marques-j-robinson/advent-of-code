@@ -4,7 +4,7 @@
   "description": "My aoc Solutions",
   "main": "src/app.js",
   "scripts": {
-    "test": "jest",
+    "test": "nodemon --exec 'cat cache/test | babel-node' js/$AOC.js",
     "solve": "nodemon --exec 'cat cache/$AOC | babel-node' js/$AOC.js"
   },
   "repository": {
