@@ -16,7 +16,7 @@ sudo chmod -R 755 cache/
 ## Download Puzzle Input
 Python script that stores puzzle input files to the filesystem.
 
-Input file may be found at `/cache/{year}/{day}`
+Input file may be found here: `/cache/{year}/{day}`
 
 **Notes**
 - Ensure virtual environment is active and dependencies installed
@@ -27,11 +27,20 @@ Input file may be found at `/cache/{year}/{day}`
 python download.py
 ```
 
-## JavaScript Solve Script
+## JavaScript
 Leveraging [Nodemon's ability to execute multiple commands](https://github.com/remy/nodemon/issues/1239#issuecomment-533034562) and [npm script command line arguments](https://stackoverflow.com/a/25356509).
-
-Solution JavaScript code will be found at `/js/{event}/{day}.js`
+### Solve Script
+Solution JavaScript code will be found here: `/js/{event}/{day}.js`
 
 ```bash
 AOC=2015/1 npm run solve
+```
+
+### TEST Script
+Helpful workaround for passing in custom test data instead of live puzzle input datafile.
+
+Create `/cache/test` file and store anything here to be read during test script execution.
+
+```bash
+AOC=2015/1 npm run test
 ```
