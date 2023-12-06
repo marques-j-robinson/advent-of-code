@@ -3,10 +3,32 @@ const i = splitByLine(input.trim()).map(i => i.match(/([\d]*)/g).filter(i => i).
 const times = i[0]
 const distanceRecords = i[1]
 
-const allAttempts = []
+const p1 = () => {
+    const allAttempts = []
 
-times.forEach((totalTime, idx) => {
-    const distanceRecord = distanceRecords[idx]
+    times.forEach((totalTime, idx) => {
+        const distanceRecord = distanceRecords[idx]
+
+        let validAttempts = 0
+        let holdTime = 1
+        while (holdTime < totalTime) {
+            const travelTime = totalTime-holdTime
+            const distance = holdTime*travelTime
+            if (distance > distanceRecord) ++validAttempts
+            ++holdTime
+        }
+        allAttempts.push(validAttempts)
+    })
+
+    return allAttempts.reduce((acc, i) => acc*i, 1)
+}
+console.log(p1())
+
+const p2 = () => {
+    const totalTime = Number(times.join(''))
+    const distanceRecord = Number(distanceRecords.join(''))
+
+    const allAttempts = []
 
     let validAttempts = 0
     let holdTime = 1
@@ -17,6 +39,8 @@ times.forEach((totalTime, idx) => {
         ++holdTime
     }
     allAttempts.push(validAttempts)
-})
 
-console.log(allAttempts.reduce((acc, i) => acc*i, 1))
+    return allAttempts.reduce((acc, i) => acc*i, 1)
+}
+
+console.log(p2())
