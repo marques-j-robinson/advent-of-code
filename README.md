@@ -33,5 +33,5 @@ Leveraging [Nodemon's ability to execute multiple commands](https://github.com/r
 Solution JavaScript code will be found at `/js/{event}/{day}.js`
 
 ```bash
-AOC=2015/1 npm run start
+AOC=2015/1 npm run solve
 ```
