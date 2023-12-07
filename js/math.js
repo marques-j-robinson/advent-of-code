@@ -1,4 +1,4 @@
-export const nums = arr => arr.map(i => Number(i))
+export const nums = arr => arr.map(Number)
 
 export const arraySum = arr => nums(arr).reduce((acc, i) => acc+i, 0)
 export const arrayProduct = arr => nums(arr).reduce((acc, i) => acc*i, 1)
