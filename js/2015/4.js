@@ -1,10 +1,10 @@
 import {input as secretKey} from '../util.js'
 import md5 from 'blueimp-md5'
 
-let i
+const part2 = false
 
 const mine = zeros => {
-    i = 1
+    let i = 1
     while (true) {
         if (md5(`${secretKey}${i}`).slice(0, 5) === zeros) break
         ++i
@@ -12,5 +12,5 @@ const mine = zeros => {
     return i
 }
 
-console.log(mine('00000'))
-console.log(mine('000000'))
+if (!part2) console.log(mine('00000'))
+if (part2) console.log(mine('000000'))
