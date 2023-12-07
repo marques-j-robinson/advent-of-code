@@ -1,5 +1,6 @@
-import {input, splitByLine} from '../util.js'
+import {input, splitBy} from '../util.js'
 import {
+    nums,
     arraySum,
     areaSquare,
     perimeterSquare,
@@ -7,12 +8,21 @@ import {
     volumeRectangularPrism,
 } from '../math.js'
 
-const boxes = splitByLine(input).map(sides => sides.split('x').map(Number))
+const part2 = true
 
-const sm = arr => {
-    arr.sort((a, b) => a-b)
-    return arr.slice(0, arr.length-1)
+const boxes = splitBy(input, '\n').map(sides => {
+    return nums(splitBy(sides, 'x'))
+})
+
+const sm = sides => {
+    sides.sort((a, b) => a-b)
+    return sides.slice(0, sides.length-1)
 }
 
-console.log(arraySum(boxes.map(sides => areaSquare(sm(sides))+surfaceAreaRectangularPrism(sides))))
-console.log(arraySum(boxes.map(sides => perimeterSquare(sm(sides))+volumeRectangularPrism(sides))))
+console.log(
+    arraySum(boxes.map(sides => {
+        const smSide = sm(sides)
+        if (!part2) return areaSquare(smSide)+surfaceAreaRectangularPrism(sides)
+        if (part2) return perimeterSquare(smSide)+volumeRectangularPrism(sides)
+    }))
+)
