@@ -1,18 +1,20 @@
-import { arraySum } from '../math.js'
 import { input } from '../util.js'
+import { arraySum } from '../math.js'
 
-console.log(arraySum(input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',')))
+const part2 = true
 
-let p2 = 0
-let cur = 0
+const moveList = input.replaceAll('(', '1,').replaceAll(')', '-1,').split(',').map(i => Number(i))
+const isInitBasementEntry = i => i === -1
 
-const move = i => i === '(' ? cur += 1 : cur -= 1
-const isInitBasementEntry = () => cur === -1
+if (!part2) console.log(arraySum(moveList))
 
-input.split('').forEach((i, position) => {
-    move(i)
-    if (p2 === 0 && isInitBasementEntry()) {
-        p2 = position+1
+if (part2) {
+    let floor = 0
+    for (let pos = 0; pos < moveList.length; ++pos) {
+        floor += moveList[pos]
+        if (isInitBasementEntry(floor)) {
+            console.log(pos+1)
+            break
+        }
     }
-})
-console.log(p2)
+}
