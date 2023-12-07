@@ -1,6 +1,14 @@
-import {input, splitByLine} from '../util.js'
+import {input, splitBy} from '../util.js'
 import {arraySum} from '../math.js'
-const i = splitByLine(input)
 
-console.log(arraySum(i.map(s => s.length - eval(s).length)))
-console.log(arraySum(i.map(s => JSON.stringify(s).length - s.length)))
+const part2 = true
+
+const lines = splitBy(input, '\n')
+
+console.log(
+    arraySum(lines.map(s => {
+        return part2
+            ? JSON.stringify(s).length - s.length
+            : s.length - eval(s).length
+    }))
+)
