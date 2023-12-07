@@ -3,7 +3,8 @@ import {arraySum} from '../math.js'
 const i = splitByLine(input).map(i => i.split(' ').map((i, idx) => idx === 1 ? Number(i) : i))
 
 const strengthSortOrder = ['five', 'four', 'full_house', 'three', 'two_pair', 'one_pair', 'high']
-const cardSortOrder = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2', '1']
+//const cardSortOrder = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
+const cardSortOrder = ['A', 'K', 'Q', 'T', '9', '8', '7', '6', '5', '4', '3', '2', 'J']
 
 const groupCards = hand => hand.split('').reduce((acc, i) => {
     if (!acc[i]) {
@@ -14,20 +15,34 @@ const groupCards = hand => hand.split('').reduce((acc, i) => {
 }, {})
 
 const getStrength = hand => {
+    if (hand === 'JJJJJ') return 'five'
     const cards = groupCards(hand)
     let high = 0
+    let highCard
+    const c = Object.keys(cards)
+    c.sort((a, b) => {
+        return cardSortOrder.indexOf(b) - cardSortOrder.indexOf(a)
+    })
+    c.forEach(i => {
+        if (cards[i] >= high && i!=='J') {
+            high = cards[i]
+            highCard = i
+        }
+    })
+    high = 0
     let pairs = 0
-    Object.keys(cards).forEach(i => {
-        if (cards[i] > high) high = cards[i]
-        if (cards[i] === 2) pairs += 1
+    const newCards = groupCards(hand.replaceAll('J', highCard))
+    Object.keys(newCards).forEach(i => {
+        if (newCards[i] > high) high = newCards[i]
+        if (newCards[i] === 2) pairs += 1
     })
     if (high === 1) return 'high'
     if (high === 2 && pairs === 1) return 'one_pair'
     if (high === 2 && pairs === 2) return 'two_pair'
     if (high === 3 && pairs === 1) return 'full_house'
     if (high === 3 && pairs === 0) return 'three'
-    if (high === 4 && pairs === 0) return 'four'
-    if (high === 5 && pairs === 0) return 'five'
+    if (high === 4) return 'four'
+    if (high === 5) return 'five'
 }
 
 const games = i.map(([hand, bid]) => ({
@@ -48,4 +63,5 @@ games.sort((a, b) => {
         }
     }
 })
+console.table(games)
 console.log(arraySum(games.map((i, idx) => i.bid*(games.length-idx))))
