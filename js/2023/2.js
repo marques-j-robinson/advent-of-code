@@ -1,11 +1,13 @@
-import {input, splitByLine} from '../util.js'
+import {input} from '../util.js'
 import {arraySum} from '../math.js'
 
 const gameData = s => s.match(/: (.*)/)[1]
 const gameId = s => s.match(/Game (\d*)/)[1]
 
-console.log(arraySum(
-    splitByLine(input).map(l => {
+const games = input.split('\n')
+
+console.log(
+    arraySum(games.map(l => {
         let isValid = true
         gameData(l).split('; ').map(cubes => {
             cubes.split(', ').forEach(c => {
@@ -16,11 +18,11 @@ console.log(arraySum(
             })
         })
         if (isValid) return gameId(l)
-    }).filter(i => i)
-))
+    }).filter(i => i))
+)
 
-console.log(arraySum(
-    splitByLine(input).map(l => {
+console.log(
+    arraySum(games.map(l => {
         let red =  0
         let green =  0
         let blue =  0
@@ -33,5 +35,5 @@ console.log(arraySum(
             })
         })
         return red*green*blue
-    })
-))
+    }))
+)

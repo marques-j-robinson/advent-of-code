@@ -1,9 +1,9 @@
-import { input, splitByLine } from '../util.js'
+import { input } from '../util.js'
 
 const getSeeds = s => s.match(/seeds: ([\d ]*)/)[1].split(' ').map(i => Number(i))
 const seeds = getSeeds(input)
 
-const categories = s => Array.from(input.matchAll(/.* map:\n([\d \n]*)/g), m => m[1]).map(i => splitByLine(i.trim()).map(j => j.split(' ').map(n => Number(n))))
+const categories = s => Array.from(input.matchAll(/.* map:\n([\d \n]*)/g), m => m[1]).map(i => i.trim().split('\n').map(j => j.split(' ').map(n => Number(n))))
 
 categories(input).forEach(c => {
     seeds.forEach((s, idx) => {

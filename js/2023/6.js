@@ -1,6 +1,6 @@
-import {input, splitByLine} from '../util.js'
+import {input} from '../util.js'
 import {arrayProduct} from '../math.js'
-const i = splitByLine(input.trim()).map(i => i.match(/([\d]*)/g).filter(i => i).map(i => Number(i)))
+const i = input.trim().split('\n').map(i => i.match(/([\d]*)/g).filter(i => i).map(i => Number(i)))
 const times = i[0]
 const distanceRecords = i[1]
 
