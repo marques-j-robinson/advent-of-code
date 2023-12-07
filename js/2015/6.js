@@ -1,4 +1,4 @@
-import {input, splitBy} from '../util.js'
+import {input} from '../util.js'
 import {arraySum} from '../math.js'
 
 const part2 = true
@@ -36,7 +36,7 @@ const parse = i => {
     }
 }
 
-splitBy(input, '\n').forEach(i => {
+input.split('\n').forEach(i => {
     const {cmd, start, end} = parse(i)
     for (let x = start.x; x <= end.x; ++x) {
         for (let y = start.y; y <= end.y; ++y) {

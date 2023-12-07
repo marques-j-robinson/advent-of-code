@@ -1,4 +1,4 @@
-import {input, splitBy} from '../util.js'
+import {input} from '../util.js'
 import {arraySum} from '../math.js'
 
 const part2 = true
@@ -30,7 +30,7 @@ const calibrate = lines => lines.map(s => {
     return `${n[0]}${n[n.length-1]}`
 })
 
-const lines = splitBy(input, '\n')
+const lines = input.split('\n')
 
 console.log(
     arraySum(part2?calibrate(replaceNumWords(lines)):calibrate(lines))

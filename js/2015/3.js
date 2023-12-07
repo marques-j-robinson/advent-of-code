@@ -1,8 +1,6 @@
-import {input, splitBy} from '../util.js'
+import {input} from '../util.js'
 
 const part2 = true
-
-const moves = splitBy(input, '')
 
 const createGrid = () => ({
     x: 0,
@@ -25,6 +23,8 @@ const move = (grid, direction) => {
 
 const removeDups = (arr1, arr2) =>
     ([...arr1,...arr2, ].filter((v, i, self) => i === self.indexOf(v)))
+
+const moves = input.split('')
 
 if (!part2) {
     const g = createGrid()

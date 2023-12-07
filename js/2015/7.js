@@ -1,4 +1,4 @@
-import {input, splitByLine} from '../util.js'
+import {input} from '../util.js'
 const MAX_HEX_VALUE = 65535
 let wires = {}
 const resetWires = () => wires = {}
@@ -94,7 +94,7 @@ const isCircuitComplete = instructions => {
     return instructions.length === wiresCount
 }
 
-const instructions = splitByLine(input)
+const instructions = input.split('\n')
 
 while (!isCircuitComplete(instructions)) {
     processInstructions(instructions)

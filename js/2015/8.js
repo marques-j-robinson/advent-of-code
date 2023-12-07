@@ -1,9 +1,9 @@
-import {input, splitBy} from '../util.js'
+import {input} from '../util.js'
 import {arraySum} from '../math.js'
 
 const part2 = true
 
-const lines = splitBy(input, '\n')
+const lines = input.split('\n')
 
 console.log(
     arraySum(lines.map(s => {

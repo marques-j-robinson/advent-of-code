@@ -1,4 +1,4 @@
-import {input, splitBy} from '../util.js'
+import {input} from '../util.js'
 import {
     nums,
     arraySum,
@@ -10,8 +10,8 @@ import {
 
 const part2 = true
 
-const boxes = splitBy(input, '\n').map(sides => {
-    return nums(splitBy(sides, 'x'))
+const boxes = input.split('\n').map(sides => {
+    return nums(sides.split('x'))
 })
 
 const sm = sides => {

@@ -1,10 +1,10 @@
-import { input, splitBy } from '../util.js'
+import { input } from '../util.js'
 import { arraySum } from '../math.js'
 
 const part2 = true
 
 const replaceDirections = input.replaceAll('(', '1,').replaceAll(')', '-1,')
-const directions = splitBy(replaceDirections, ',')
+const directions = replaceDirections.split(',')
 
 if (!part2) console.log(arraySum(directions))
 
