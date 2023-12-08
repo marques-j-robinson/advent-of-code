@@ -11,3 +11,7 @@ export const areaSquare = sides => sides.reduce((acc, i) => acc*i, 1)
 export const perimeterSquare = sides => sides.reduce((acc, i) => acc+i*2, 0)
 
 export const manhattanDistance = (a, b) => Math.abs(a) + Math.abs(b)
+
+export const gcd = (a, b) => a ? gcd(b % a, a) : b;
+
+export const lcm = (a, b) => a * b / gcd(a, b);
