@@ -1,39 +1,38 @@
 import {input} from '../util.js'
 import {arraySum} from '../math.js'
 
-const gameData = s => s.match(/: (.*)/)[1]
-const gameId = s => s.match(/Game (\d*)/)[1]
+const part2 = true
 
-const games = input.split('\n')
+const getId = s => s.match(/Game (\d*)/)[1]
+const formatCubes = s => s.match(/: (.*)/)[1].split('; ').map(i => i.split(', '))
 
-console.log(
-    arraySum(games.map(l => {
-        let isValid = true
-        gameData(l).split('; ').map(cubes => {
-            cubes.split(', ').forEach(c => {
-                const [n, cube] = c.split(' ')
-                if (cube === 'red' && n > 12) isValid = false
-                if (cube === 'green' && n > 13) isValid = false
-                if (cube === 'blue' && n > 14) isValid = false
-            })
-        })
-        if (isValid) return gameId(l)
-    }).filter(i => i))
-)
+const games = input.split('\n').map(game => ({
+    id: getId(game),
+    cubePulls: formatCubes(game),
+}))
 
-console.log(
-    arraySum(games.map(l => {
-        let red =  0
-        let green =  0
-        let blue =  0
-        gameData(l).split('; ').map(cubes => {
-            cubes.split(', ').forEach(c => {
-                const [n, cube] = c.split(' ')
+const play = ({id, cubePulls}) => {
+    let isValid = true
+    let red =  0
+    let green =  0
+    let blue =  0
+    cubePulls.forEach(cubes => {
+        cubes.forEach(c => {
+            const [n, cube] = c.split(' ')
+            if (part2) {
                 if (cube === 'red' && n > red) red = Number(n)
                 if (cube === 'green' && n > green) green = Number(n)
                 if (cube === 'blue' && n > blue) blue = Number(n)
-            })
+            } else {
+                if (cube === 'red' && n > 12) isValid = false
+                if (cube === 'green' && n > 13) isValid = false
+                if (cube === 'blue' && n > 14) isValid = false
+            }
         })
-        return red*green*blue
-    }))
-)
+    })
+    return part2
+        ? red*green*blue
+        : isValid && id
+}
+
+console.log(arraySum(games.map(play).filter(i => i)))
