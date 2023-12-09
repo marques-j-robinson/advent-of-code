@@ -1,6 +1,8 @@
 import {input} from '../util.js'
 import {nums, arraySum} from '../math.js'
 
+const part2 = true
+
 const getDiffs = history => {
     const diffs = [history]
     while (diffs[diffs.length-1].filter(i => i===0).length !== diffs[diffs.length-1].length) {
@@ -11,11 +13,10 @@ const getDiffs = history => {
         }
         diffs.push(newDiffs)
     }
-    return diffs.reduce((acc, i) => {
-        return acc+i[i.length-1]
-    }, 0)
+    return diffs.reduce((acc, i) => acc+i[i.length-1], 0)
 }
 
 console.log(arraySum(input.split('\n').map(i => {
-    return getDiffs(nums(i.split(' ')))
+    if (!part2) return getDiffs(nums(i.split(' ')))
+    if (part2) return getDiffs(nums(i.split(' ').reverse()))
 })))
