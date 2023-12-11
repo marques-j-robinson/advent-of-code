@@ -1,7 +1,7 @@
 import {input} from '../util.js'
 import {permute} from '../array.js'
 
-
+const part2 = true
 
 const locations = input.split('\n').reduce((acc, i) => {
     const [_, from, to, distance] = i.match(/(\w*) to (\w*) = (\d*)/)
@@ -16,10 +16,12 @@ const locations = input.split('\n').reduce((acc, i) => {
     return acc
 }, {})
 
-console.log(Math.min(...permute(Object.keys(locations)).map(route => {
+const distances = permute(Object.keys(locations)).map(route => {
     let distance = 0
     for (let i = 1; i<route.length; ++i) {
         distance += locations[route[i-1]][route[i]]
     }
     return distance
-})))
+})
+
+console.log(part2?Math.max(...distances):Math.min(...distances))
