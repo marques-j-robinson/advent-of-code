@@ -1,8 +1,5 @@
 export const nums = arr => arr.map(Number)
 
-export const arraySum = arr => nums(arr).reduce((acc, i) => acc+i, 0)
-export const arrayProduct = arr => nums(arr).reduce((acc, i) => acc*i, 1)
-
 export const surfaceAreaRectangularPrism = ([l, w, h]) => 2*l*w + 2*w*h + 2*h*l
 
 export const volumeRectangularPrism = ([l, w, h]) => l*w*h
