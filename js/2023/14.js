@@ -34,37 +34,36 @@ const totalLoad = arr => sum(arr.reverse().map((row, rowId) => {
 
 const rotate = arr => {
     const newArr = []
-    let rowId = 0
-    while (rowId < arr.length) {
-        arr[rowId].forEach((val, key) => {
-            if (rowId === 0) {
-                newArr.push([val])
-            } else {
-                newArr[key].push(val)
-            }
+    let col = 0
+    while (col<arr[0].length) {
+        const newRow = []
+        arr.forEach(r => {
+            newRow.push(r[col])
         })
-        ++rowId
+        newArr.push(newRow)
+        ++col
     }
     return newArr
 }
 
 const rows = input.split('\n').map(i => i.split(''))
+const display = arr => console.log(arr.map(i => i.join('')).join('\n'))
 
 if (!part2) {
     console.log(totalLoad(tilt(rows)))
 } else {
-    const max = 1000000000
+    const max = 1000
     let r = rows
     let i = 0
     while (i<max) {
         const cycleAmount = 4
         let count = 0
         while (count<cycleAmount) {
-            r = rotate(tilt(r.reverse()))
+            r = tilt(r)
+            r = rotate(r.reverse())
             ++count
         }
-        if (i%100000===0) console.log(i)
         ++i
     }
-    console.log(totalLoad(rotate(r)))
+    console.log(totalLoad(r))
 }
