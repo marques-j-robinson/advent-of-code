@@ -1,12 +1,12 @@
-import { input } from '../util.js'
-import { arraySum } from '../math.js'
+import { input } from '../puzzle-input.js'
+import { sum } from '../array.js'
 
 const part2 = true
 
 const replaceDirections = input.replaceAll('(', '1,').replaceAll(')', '-1,')
 const directions = replaceDirections.split(',')
 
-if (!part2) console.log(arraySum(directions))
+if (!part2) console.log(sum(directions))
 
 const isInitBasementEntry = i => i === -1
 
