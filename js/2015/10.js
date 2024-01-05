@@ -1,5 +1,7 @@
 import { input } from '../puzzle-input.js'
 
+const part2 = true
+
 function process(incoming) {
     let outgoing = ''
     let i = 0
@@ -24,8 +26,9 @@ function process(incoming) {
 
 let total = 0
 let res = input
+const max = part2 ? 50 : 40
 
-while (total<40) {
+while (total<max) {
     res = process(res)
     ++total
 }
