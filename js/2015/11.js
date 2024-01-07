@@ -1,6 +1,6 @@
 import {input} from '../puzzle-input.js'
 
-const max = 7
+const part2 = true
 
 const letters = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const n = letters.length
@@ -57,9 +57,7 @@ function isValid(str) {
 const circular = i => letters[(i % n + n) % n]
 const step = l => circular(letters.indexOf(l)+1)
 
-let str = input
-
-while (!isValid(str)) {
+const increment = str => {
     const arr = str.split('')
     let i = str.length-1
     while (i>=0) {
@@ -72,7 +70,24 @@ while (!isValid(str)) {
             break
         }
     }
-    str = arr.join('')
+    return arr.join('')
 }
 
-console.log(str)
+/*
+ * Main Password Update Function
+ */
+const updatePassword = s => {
+    let str = s
+
+    while (!isValid(str)) {
+        str = increment(str)
+    }
+    return str
+}
+
+if (!part2) {
+    console.log(updatePassword(input))
+} else {
+    const cur = increment(updatePassword(input))
+    console.log(updatePassword(cur))
+}
