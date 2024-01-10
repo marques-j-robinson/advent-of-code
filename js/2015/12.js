@@ -1,5 +1,7 @@
 import {input} from '../puzzle-input.js'
 
+const part2 = true
+
 let total = 0
 
 function calculate(json) {
@@ -13,6 +15,7 @@ function calculate(json) {
     }
 
     if (!Array.isArray(json) && typeof json === 'object') {
+        if (part2 && Object.values(json).includes('red')) return
         Object.keys(json).forEach(k => {
             calculate(json[k])
         })
