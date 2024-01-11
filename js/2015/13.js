@@ -13,11 +13,8 @@ function parse(instruction) {
 }
 
 input.split('\n').forEach(parse)
-//console.log(table)
 
 const combos = permute(Object.keys(table))
-//const combos = [permute(Object.keys(table))[0]]
-//console.log(combos)
 
 let max = 0
 combos.forEach(names => {
