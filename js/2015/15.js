@@ -1,6 +1,6 @@
 import {input} from '../puzzle-input.js'
 
-const part2 = false
+const part2 = true
 
 const ingredients = input.split('\n').reduce((acc, i) => {
 	const [_, name, properties] = /([a-zA-Z]*): ([0-9a-z,\s-]*)$/.exec(i)
@@ -47,13 +47,17 @@ teaspoonCombos().forEach(teaspoons => {
 	let durability = 0
 	let flavor = 0
 	let texture = 0
+	let calories = 0
 	Object.keys(ingredients).forEach((name, key) => {
 		const teaspoon = teaspoons[key]
 		capacity += teaspoon*ingredients[name].capacity
 		durability += teaspoon*ingredients[name].durability
 		flavor += teaspoon*ingredients[name].flavor
 		texture += teaspoon*ingredients[name].texture
+		calories += teaspoon*ingredients[name].calories
 	})
+	const caloriesGoal = 500
+	if (part2 && calories !== caloriesGoal) return
 	const total = handleNegative(capacity)*handleNegative(durability)*handleNegative(flavor)*handleNegative(texture)
 	if (total > max) max = total
 })
