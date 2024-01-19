@@ -1,5 +1,7 @@
 import {input} from '../puzzle-input.js'
 
+const part2 = true
+
 function parse() {
     const regex = /Sue ([0-9]*): (.*)$/
 
@@ -36,7 +38,17 @@ let match = null
 sueList.forEach(({id, values}) => {
     let valid = true
     Object.keys(output).forEach(key => {
-        if (values[key] && values[key] !== output[key]) valid = false
+        if (!part2) {
+            if (values[key] && values[key] !== output[key]) valid = false
+        } else {
+            if (key === 'cats' || key === 'trees') {
+                if (values[key] && values[key] <= output[key]) valid = false
+            } else if (key === 'pomeranians' || key === 'goldfish') {
+                if (values[key] && values[key] >= output[key]) valid = false
+            } else {
+                if (values[key] && values[key] !== output[key]) valid = false
+            }
+        }
     })
 
     if (valid) match = id
