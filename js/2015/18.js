@@ -1,5 +1,11 @@
 import {input} from '../puzzle-input.js'
+
+const part2 = true
+
 let grid = input.split('\n').map(i => i.split(''))
+
+const maxRow = grid.length-1
+const maxCol = grid[0].length-1
 
 const on = '#'
 const off = '.'
@@ -26,9 +32,6 @@ function toggle(light, neighbors) {
 }
 
 function getNeighbors(grid, rowId, colId) {
-    const maxRow = grid.length-1
-    const maxCol = grid[0].length-1
-
     const neighbors = []
 
     //left
@@ -77,11 +80,21 @@ function processLights() {
     grid = newGrid
 }
 
+function turnOnCorners() {
+    grid[0][0] = on
+    grid[maxRow][0] = on
+    grid[0][maxCol] = on
+    grid[maxRow][maxCol] = on
+}
+
 const stepLimit = 100
 let step = 0
 
 while (step < stepLimit) {
     processLights()
+    if (part2) {
+        turnOnCorners()
+    }
     ++step
 }
 
