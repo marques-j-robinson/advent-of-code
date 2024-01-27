@@ -105,23 +105,10 @@ const shop = {
     ],
 }
 
-function allShopOptions() {
+function allEquipment() {
     const res = []
     shop.weapons.forEach(weapon => {
         res.push([weapon])
-    })
-    shop.armor.forEach(a => {
-        res.push([a])
-    })
-    shop.rings.forEach(ring => {
-        res.push([ring])
-    })
-    shop.rings.forEach(ringA => {
-        shop.rings.forEach(ringB => {
-            if (ringA.name !== ringB.name) {
-                res.push([ringA, ringB])
-            }
-        })
     })
     shop.weapons.forEach(weapon => {
         shop.armor.forEach(a => {
@@ -134,16 +121,6 @@ function allShopOptions() {
             shop.rings.forEach(ringB => {
                 if (ringA.name !== ringB.name) {
                     res.push([weapon, ringA, ringB])
-                }
-            })
-        })
-    })
-    shop.armor.forEach(a => {
-        shop.rings.forEach(ringA => {
-            res.push([a, ringA])
-            shop.rings.forEach(ringB => {
-                if (ringA.name !== ringB.name) {
-                    res.push([a, ringA, ringB])
                 }
             })
         })
@@ -182,20 +159,18 @@ function game(players) {
     }
 
     let winner
-    players.forEach(({hp, name}) => hp  > 0 ? winner = name : null)
+    players.forEach(({hp, name}) => hp > 0 ? winner = name : null)
 
     return winner
 }
 
-let cost = 100*100
+const part2 = true
 
-allShopOptions().forEach(options => {
+let cost = part2 ? 0 : 100*100
+
+allEquipment().forEach(equipment => {
     const boss = {
         name: 'boss',
-        // TEST DATA
-        //hp: 12,
-        //damage: 7,
-        //armor: 2,
     }
     input.split('\n').forEach(i => {
         const [name, value] = i.split(': ')
@@ -208,21 +183,20 @@ allShopOptions().forEach(options => {
         hp: 100,
         damage: 0,
         armor: 0,
-        //TEST DATA
-        //hp: 8,
-        //damage: 5,
-        //armor: 5,
     }
-    options.forEach(({damage, armor}) => {
+    equipment.forEach(({damage, armor}) => {
         player.damage += damage
         player.armor += armor
     })
 
     const winner = game([player, boss])
-    console.log(winner)
-    if (winner === 'player') {
-        const optionsCost = options.reduce((acc, i) => acc+i.cost, 0)
-        if (optionsCost < cost) cost = optionsCost
+    if (!part2 && winner === 'player') {
+        const equipmentCost = equipment.reduce((acc, i) => acc+i.cost, 0)
+        if (equipmentCost < cost) cost = equipmentCost
+    }
+    if (part2 && winner === 'boss') {
+        const equipmentCost = equipment.reduce((acc, i) => acc+i.cost, 0)
+        if (equipmentCost > cost) cost = equipmentCost
     }
 })
 
