@@ -30,3 +30,13 @@ a.forEach((i, idx) => {
 })
 
 console.log(sum(diffs))
+
+const similarity = a.map(i => {
+    let count = 0
+    b.forEach(j => {
+        if (i === j) ++count
+    })
+    return count*i
+})
+
+console.log(sum(similarity))
