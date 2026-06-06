@@ -1,4 +1,4 @@
-import {input} from '../util.js'
+import {input} from '../puzzle-input.js'
 import {manhattanDistance} from '../math.js'
 const i = input.split(', ').map(i => [i[0], Number(i.slice(1))])
 let p2 = 0

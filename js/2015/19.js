@@ -1,6 +1,5 @@
 import {input} from '../puzzle-input.js'
-const [replacements, molecule] = input.split('\n\n')
-
+const [replacements, medicine] = input.split('\n\n')
 const parse = i => i.split(' => ')
 
 const distinct = []
@@ -8,16 +7,16 @@ const distinct = []
 replacements.split('\n').forEach(r => {
     const [toFind, replace] = parse(r)
 
-    for (let i = 0; i<molecule.length; i++) {
+    for (let i = 0; i<medicine.length; i++) {
         let letters
         if (toFind.length === 1) {
-            letters = molecule[i]
+            letters = medicine[i]
         } else {
-            letters = molecule.substring(i, i+toFind.length)
+            letters = medicine.substring(i, i+toFind.length)
         }
         if (toFind === letters) {
-            const first = molecule.slice(0, i)
-            const last = molecule.slice(i+toFind.length)
+            const first = medicine.slice(0, i)
+            const last = medicine.slice(i+toFind.length)
             const newMolecule = first+replace+last
             if (!distinct.includes(newMolecule)) {
                 distinct.push(newMolecule)

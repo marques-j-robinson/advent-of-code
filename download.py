@@ -1,4 +1,13 @@
+"""
+Download puzzle input files to disk.
+
+Steps:
+    1) If
+"""
+
+
 import os
+import json
 
 import urllib3
 from dotenv import load_dotenv
@@ -14,13 +23,18 @@ url = f'https://adventofcode.com/{e}/day/{d}/input'
 token = os.getenv('token')
 
 
+def format_puzzle_input(data):
+    return data
+
+
 def save_new_puzzle_input():
     http = urllib3.PoolManager()
     r = http.request('GET', url, headers={'Cookie':f'session={token}'})
     if r.status != 200:
         raise Exception(f'BAD_REQUEST status_code:{r.status}')
     with open(cache_path, 'w') as f:
-        f.write(r.data.decode('utf-8').rstrip('\n'))
+        # f.write(json.dumps({'data':format_puzzle_input(r.data.decode('utf-8').rstrip('\n'))}))
+        f.write(format_puzzle_input(r.data.decode('utf-8').rstrip('\n')))
         f.close()
 
 

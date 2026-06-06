@@ -1,15 +1,25 @@
 import {input} from '../util.js'
+
+const part2 = false
+
 let p1 = 0
 let p2 = 0
-let symbolRe = /[^.\d\n]/gm
-let numRe = /\d*/g
-let gearRe = /\*/g
 
 const lines = input.split('\n')
 const lineLen = lines[0].length
 
+const gearsByLine = lines.map(line => {
+    const matches = [...line.matchAll(/\*/g)]
+    return matches.filter(i => i[0]!=='').map(i => i.index)
+})
+
+const symbolsByLine = lines.map(line => {
+    const matches = [...line.matchAll(/[^.\d\n]/gm)]
+    return matches.filter(i => i[0]!=='').map(i => i.index)
+})
+
 const nums = lines.flatMap((line, lineIdx) => {
-    const matches = [...line.matchAll(numRe)]
+    const matches = [...line.matchAll(/\d*/g)]
     return matches.filter(i => i[0]!=='').map(i => {
         return {
             num: Number(i[0]),
@@ -18,11 +28,6 @@ const nums = lines.flatMap((line, lineIdx) => {
             lineIdx,
         }
     })
-})
-
-const symbolsByLine = lines.map(line => {
-    const matches = [...line.matchAll(symbolRe)]
-    return matches.filter(i => i[0]!=='').map(i => i.index)
 })
 
 p1 += nums.map(({num, start, end, lineIdx}) => {
@@ -61,11 +66,6 @@ p1 += nums.map(({num, start, end, lineIdx}) => {
     }
     return isValid && num
 }).filter(i => i).reduce((acc, i) => acc+i, 0)
-
-const gearsByLine = lines.map(line => {
-    const matches = [...line.matchAll(gearRe)]
-    return matches.filter(i => i[0]!=='').map(i => i.index)
-})
 
 p2 += gearsByLine.flatMap((line, lineIdx) => {
     return line.map(gIdx => {
