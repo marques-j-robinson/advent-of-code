@@ -1,7 +1,8 @@
 parent_file_path = 'events/2015/day01/'
 
-with open(f'{parent_file_path}data', 'r', encoding='utf-8') as file:
-    data = file.read()
+with open(f'{parent_file_path}data', 'r', encoding='utf-8') as f:
+    data = f.read()
+    f.close()
 
 floor = 0
 basement_entered = False
