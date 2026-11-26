@@ -23,6 +23,15 @@ All numbers in the elves' list are in feet. How many total **square feet of wrap
 
 ## Algorithm
 
+1. Keep track of total, starting at 0
+1. Split the input data by new line
+1. Loop through split input data
+   - Extract `l`, `w`, `h` values by splitting by `x`
+   - Calculate the surface area
+   - Calculate the area of the smallest side
+   - Add the results of these calculations to the total
+1. After looping, the total is the answer
+
 ### Big O
 
 ## Part 2
