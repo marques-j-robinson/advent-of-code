@@ -16,7 +16,9 @@ This is just in case anyone else who happens upon this may input their own data 
 
 Solutions are designed to be ran from the parent directory.
 
-For Event 2015 Day 01 (Python Solution), the execution sequence would look like this: `python events/2015/day01/solution.py`.
+Running solution files as a module resolves issues with importing utility files from other directories as described [here](https://stackoverflow.com/questions/714063/importing-modules-from-parent-folder)
+
+For Event 2015 Day 01 (Python Solution), the execution sequence would look like this: `python -m events.2015.day01.solution`.
 
 ## Solutions
 
