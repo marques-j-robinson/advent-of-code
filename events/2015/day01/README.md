@@ -3,7 +3,7 @@
 Run solution by executing:
 
 ```bash
-python events/2015/day01/solution.py
+python -m events.2015.day01.solution
 ```
 
 ## Part 1
