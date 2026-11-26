@@ -12,7 +12,7 @@ python -m events.{{event}}.{{day}}.solution
 
 ## Algorithm
 
-### Big O
+### Big O Notation
 
 ## Part 2
 
@@ -20,4 +20,4 @@ python -m events.{{event}}.{{day}}.solution
 
 ## Algorithm
 
-### Big O
+### Big O Notation

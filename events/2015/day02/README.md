@@ -32,7 +32,7 @@ All numbers in the elves' list are in feet. How many total **square feet of wrap
    - Add the results of these calculations to the total
 1. After looping, the total is the answer
 
-### Big O
+### Big O Notation
 
 ## Part 2
 
@@ -40,4 +40,4 @@ All numbers in the elves' list are in feet. How many total **square feet of wrap
 
 ## Algorithm
 
-### Big O
+### Big O Notation

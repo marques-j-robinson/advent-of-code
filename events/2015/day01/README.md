@@ -33,7 +33,7 @@ To **what floor** do the instructions take Santa?
    - Based on value from puzzle input, increase or decrease floor
 1. Final floor is the answer
 
-### Big O
+### Big O Notation
 
 - Time: O(n)
 - Space: O(1)
@@ -61,7 +61,7 @@ What is the **position** of the character that causes Santa to first enter the b
      - Update basement entry to `true`
      - The **position** is the answer
 
-### Big O
+### Big O Notation
 
 - Time: O(n)
 - Space: O(1)
