@@ -1,8 +1,6 @@
-parent_file_path = 'events/2015/day01/'
+from lib.file_system import read_input_data
 
-with open(f'{parent_file_path}data', 'r', encoding='utf-8') as f:
-    data = f.read()
-    f.close()
+data = read_input_data('2015', 'day01')
 
 floor = 0
 basement_entered = False
