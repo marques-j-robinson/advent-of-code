@@ -54,4 +54,16 @@ How many total **feet of ribbon** should they order?
 
 ## Algorithm
 
+1. Keep track of total, starting at 0
+1. Split the input data by new line
+1. Loop through split input data
+   - Extract `l`, `w`, `h` values by splitting by `x`
+   - Calculate the perimeter of the smallest face
+   - Calculate the cubic feet of volume
+   - Add the results of these calculations to the total
+1. After looping, the total is the answer
+
 ### Big O Notation
+
+- Time: O(n)
+- Space: O(n)
