@@ -20,3 +20,15 @@ For example:
 ## Problem Statement
 
 All numbers in the elves' list are in feet. How many total square feet of wrapping paper should they order?
+
+## Algorithm
+
+### Big O
+
+## Part 2
+
+## Problem Statement
+
+## Algorithm
+
+### Big O
