@@ -34,6 +34,9 @@ All numbers in the elves' list are in feet. How many total **square feet of wrap
 
 ### Big O Notation
 
+- Time: O(n)
+- Space: O(n)
+
 ## Part 2
 
 ## Problem Statement
