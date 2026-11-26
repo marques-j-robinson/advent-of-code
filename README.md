@@ -17,3 +17,10 @@ This is just in case anyone else who happens upon this may input their own data 
 Solutions are designed to be ran from the parent directory.
 
 For Event 2015 Day 01 (Python Solution), the execution sequence would look like this: `python events/2015/day01/main.py`.
+
+## Solutions
+
+<details>
+<summary>2015</summary>
+
+- [Day 01](./events/2015/day01/README.md)
